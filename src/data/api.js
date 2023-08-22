@@ -1,4 +1,4 @@
-const api = () => {
+const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1';
 
   const putAccessToken = (token) => localStorage.setItem('accessToken', token);
@@ -126,13 +126,13 @@ const api = () => {
     return detailThread;
   }
 
-  async function createComment(threadId, { body }) {
+  async function createComment(threadId, content) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ body }),
+        body: JSON.stringify({ content }),
       },
     );
 
@@ -148,7 +148,7 @@ const api = () => {
     return comment;
   }
 
-  async function upvoteThread(id) {
+  async function upVoteThread(id) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${id}/up-vote`, {
       method: 'POST',
     });
@@ -165,7 +165,7 @@ const api = () => {
     return vote;
   }
 
-  async function downvoteThread(id) {
+  async function downVoteThread(id) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${id}/down-vote`,
       {
@@ -205,7 +205,7 @@ const api = () => {
     return vote;
   }
 
-  async function upvoteComment(threadId, commentId) {
+  async function upVoteComment(threadId, commentId) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
       {
@@ -225,7 +225,7 @@ const api = () => {
     return vote;
   }
 
-  async function downvoteComment(threadId, commentId) {
+  async function downVoteComment(threadId, commentId) {
     const response = await _fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
       {
@@ -290,14 +290,14 @@ const api = () => {
     getAllThreads,
     getThreadDetail,
     createComment,
-    upvoteThread,
-    downvoteThread,
+    upVoteThread,
+    downVoteThread,
     neutralizeThreadVote,
-    upvoteComment,
-    downvoteComment,
+    upVoteComment,
+    downVoteComment,
     neutralizeCommentVote,
     getLeaderboards,
   };
-};
+})();
 
 export default api;
