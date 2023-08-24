@@ -8,6 +8,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import LeaderboardPage from './pages/LeaderboardPage';
 
 function App() {
   const { authUser = null, isPreload = false } = useSelector(
@@ -36,7 +38,15 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<LoginPage />}
+              element={<HomePage />}
+            />
+            <Route
+              path="/threads"
+              element={<HomePage />}
+            />
+            <Route
+              path="/leaderboards"
+              element={<LeaderboardPage />}
             />
             <Route
               path="/login"
