@@ -7,6 +7,7 @@ import Loading from './components/Loading';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   const { authUser = null, isPreload = false } = useSelector(
@@ -31,7 +32,7 @@ function App() {
       <>
         <Loading />
         <Header className />
-        <main className=" bg-white m-auto h-screen max-w-4xl">
+        <main className=" bg-white m-auto h-screen max-w-4xl pt-24 p-10">
           <Routes>
             <Route
               path="/"
@@ -40,6 +41,10 @@ function App() {
             <Route
               path="/login"
               element={<LoginPage />}
+            />
+            <Route
+              path="/register"
+              element={<RegisterPage />}
             />
           </Routes>
         </main>
