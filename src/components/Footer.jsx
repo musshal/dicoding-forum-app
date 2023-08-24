@@ -2,6 +2,7 @@ import React from 'react';
 import { AiOutlineLogin } from 'react-icons/ai';
 import { HiOutlineChatBubbleLeftRight } from 'react-icons/hi2';
 import { MdOutlineLeaderboard } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -20,13 +21,13 @@ function Footer() {
         <MdOutlineLeaderboard size={25} />
         <span>Leaderboards</span>
       </button>
-      <button
-        type="button"
+      <Link
+        to="/login"
         className="inline-flex flex-col p-2 items-center justify-center group"
       >
         <AiOutlineLogin size={25} />
         <span>Login</span>
-      </button>
+      </Link>
     </footer>
   );
 }
