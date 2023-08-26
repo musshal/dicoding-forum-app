@@ -31,10 +31,10 @@ function App() {
 
   if (authUser === null) {
     return (
-      <>
+      <div className="bg-gray-100">
         <Loading />
         <Header className />
-        <main className=" bg-white m-auto h-screen max-w-4xl pt-24 p-10">
+        <main className="bg-white m-auto h-screen max-w-4xl pt-24 p-10">
           <Routes>
             <Route
               path="/"
@@ -59,7 +59,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
-      </>
+      </div>
     );
   }
 
