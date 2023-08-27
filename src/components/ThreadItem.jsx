@@ -9,7 +9,7 @@ function ThreadItem() {
     <div className="my-5">
       <CategoryItem />
       <h3 className="my-3 text-xl font-semibold">
-        <Link to="/">Bagaimana pengalamanmu belajar Redux?</Link>
+        <Link to="/detail">Bagaimana pengalamanmu belajar Redux?</Link>
       </h3>
       <p>
         Coba ceritakan dong, gimana pengalaman kalian belajar Redux di Dicoding?
