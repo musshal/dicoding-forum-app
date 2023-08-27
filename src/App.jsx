@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import LeaderboardPage from './pages/LeaderboardPage';
+import DetailPage from './pages/DetailPage';
 
 function App() {
   const { authUser = null, isPreload = false } = useSelector(
@@ -43,6 +44,10 @@ function App() {
             <Route
               path="/threads"
               element={<HomePage />}
+            />
+            <Route
+              path="/detail"
+              element={<DetailPage />}
             />
             <Route
               path="/leaderboards"
