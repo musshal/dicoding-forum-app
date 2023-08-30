@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { asyncPreloadSuccess } from './states/isPreload/action';
-// import { asyncUnsetAuthUser } from './states/authUser/action';
+import { asyncPreloadProcess } from './states/isPreload/action';
+import { asyncUnsetAuthUser } from './states/authUser/action';
 import Loading from './components/Loading';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,12 +19,12 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(asyncPreloadSuccess());
+    dispatch(asyncPreloadProcess());
   }, [dispatch]);
 
-  // const onSignOut = () => {
-  //   dispatch(asyncUnsetAuthUser());
-  // };
+  const onLogout = () => {
+    dispatch(asyncUnsetAuthUser());
+  };
 
   if (isPreload) {
     return null;
@@ -63,16 +63,51 @@ function App() {
             />
           </Routes>
         </main>
-        <Footer />
+        <Footer
+          authUser={authUser}
+          logout={onLogout}
+        />
       </div>
     );
   }
 
   return (
-    <>
+    <div className="bg-gray-100">
       <Loading />
-      <Header />
-    </>
+      <Header className />
+      <main className="bg-white m-auto h-screen max-w-4xl pt-24 p-10">
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage />}
+          />
+          <Route
+            path="/threads"
+            element={<HomePage />}
+          />
+          <Route
+            path="/detail"
+            element={<DetailPage />}
+          />
+          <Route
+            path="/leaderboards"
+            element={<LeaderboardPage />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage />}
+          />
+          <Route
+            path="/register"
+            element={<RegisterPage />}
+          />
+        </Routes>
+      </main>
+      <Footer
+        authUser={authUser}
+        logout={onLogout}
+      />
+    </div>
   );
 }
 

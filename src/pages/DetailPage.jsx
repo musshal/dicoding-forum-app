@@ -10,7 +10,8 @@ function DetailPage() {
       <div className="mb-5">
         <h2 className="text-xl">Beri Komentar</h2>
         <p>
-          <Link to="/login">Login </Link>
+          <Link to="/login" className="underline">Login</Link>
+          {' '}
           untuk memberi komentar
         </p>
       </div>
