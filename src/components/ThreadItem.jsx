@@ -4,16 +4,15 @@ import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
 import { BiShare } from 'react-icons/bi';
 import CategoryItem from './CategoryItem';
 
-function ThreadItem() {
+// eslint-disable-next-line react/prop-types, no-unused-vars, object-curly-newline
+function ThreadItem({ id, title, body, category, createdAt, totalComments }) {
   return (
     <div className="my-5">
       <CategoryItem />
       <h3 className="my-3 text-xl font-semibold">
-        <Link to="/detail">Bagaimana pengalamanmu belajar Redux?</Link>
+        <Link to="/detail">{title}</Link>
       </h3>
-      <p>
-        Coba ceritakan dong, gimana pengalaman kalian belajar Redux di Dicoding?
-      </p>
+      <p>{body}</p>
       <div className="flex gap-5 mt-3">
         <button type="button">
           <AiOutlineLike />
@@ -27,7 +26,8 @@ function ThreadItem() {
         <p>89 hari lalu</p>
         <p>
           Dibuat oleh
-          <span className="font-semibold"> Dimas Saputra</span>
+          {' '}
+          <span className="font-semibold">Dimas Saputra</span>
         </p>
       </div>
       <hr className="mt-3" />

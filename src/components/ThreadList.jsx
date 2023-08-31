@@ -1,11 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import ThreadItem from './ThreadItem';
 
-function ThreadList() {
+function ThreadList({ threads }) {
   return (
     <div>
-      <ThreadItem />
-      <ThreadItem />
+      {threads.map((thread) => (
+        <ThreadItem
+          key={thread.id}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...thread}
+        />
+      ))}
     </div>
   );
 }
