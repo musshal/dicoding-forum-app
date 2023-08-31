@@ -7,8 +7,8 @@ import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 function HomePage() {
   const {
     threads = [],
-    // users = [],
-    // authUser,
+    users = [],
+    authUser,
   } = useSelector((states) => states);
   const dispatch = useDispatch();
 
@@ -16,14 +16,24 @@ function HomePage() {
     dispatch(asyncPopulateUsersAndThreads());
   }, [dispatch]);
 
+  const threadsList = threads.map((thread) => ({
+    ...thread,
+    user: users.find((user) => user.id === thread.ownerId),
+    authUser: authUser.id,
+  }));
+
+  const categories = Array.from(
+    new Set(threads.map((thread) => thread.category)),
+  );
+
   return (
     <section>
       <h2 className="mb-2">Kategori populer</h2>
-      <CategoryList />
+      <CategoryList categories={categories} />
       <h2 className="my-7 text-2xl font-semibold tracking-normal">
         Diskusi Tersedia
       </h2>
-      <ThreadList threads={threads} />
+      <ThreadList threads={threadsList} />
     </section>
   );
 }

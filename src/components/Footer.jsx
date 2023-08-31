@@ -67,12 +67,16 @@ function Footer({ authUser, logout }) {
 }
 
 const authUserShape = {
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
 };
 
 Footer.propTypes = {
-  authUser: PropTypes.shape(authUserShape).isRequired,
+  authUser: PropTypes.shape(authUserShape),
   logout: PropTypes.func.isRequired,
+};
+
+Footer.defaultProps = {
+  authUser: null,
 };
 
 export default Footer;
