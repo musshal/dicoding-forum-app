@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
 
 function ThreadInput({ onCreate }) {
-  const [title, onTitleChange] = useInput();
-  const [category, onCategoryChange] = useInput();
-  const [body, onBodyChange] = useInput();
+  const [title, onTitleChange] = useInput('');
+  const [category, onCategoryChange] = useInput('');
+  const [body, onBodyChange] = useInput('');
 
   return (
     <form className="flex flex-col gap-2">
