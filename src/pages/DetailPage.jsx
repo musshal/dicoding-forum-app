@@ -4,12 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ThreadItem from '../components/ThreadItem';
 import CommentList from '../components/CommentList';
-import { asyncReceiveThreadDetail } from '../states/threadDetail/action';
+import {
+  asyncAddComment,
+  asyncReceiveThreadDetail,
+} from '../states/threadDetail/action';
+import CommentInput from '../components/CommentInput';
 
 function DetailPage({ authUser }) {
   const { id } = useParams();
   const { threadDetail = null } = useSelector((states) => states);
   const dispatch = useDispatch();
+
+  const onComment = (content) => {
+    dispatch(asyncAddComment(id, content));
+  };
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(id));
@@ -29,24 +37,28 @@ function DetailPage({ authUser }) {
         user={threadDetail.owner}
         createdAt={threadDetail.createdAt}
       />
-      <div className="mb-5">
+      <div className="flex flex-col gap-3">
         <h2 className="text-xl">Beri Komentar</h2>
-        <p>
-          <Link
-            to="/login"
-            className="underline"
-          >
-            Login
-          </Link>
-          {' '}
-          untuk memberi komentar
-        </p>
+        {authUser ? (
+          <CommentInput onComment={onComment} />
+        ) : (
+          <p>
+            <Link
+              to="/login"
+              className="underline"
+            >
+              Login
+            </Link>
+            {' '}
+            untuk memberi komentar
+          </p>
+        )}
+        {authUser ? (
+          <CommentList comments={threadDetail.comments} />
+        ) : (
+          <h3 className="text-xl font-semibold">Komentar (0)</h3>
+        )}
       </div>
-      {authUser ? (
-        <CommentList />
-      ) : (
-        <h3 className="text-xl font-semibold">Komentar (0)</h3>
-      )}
     </div>
   );
 }
