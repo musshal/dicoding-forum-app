@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const userProp = {
   id: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
   name: PropTypes.string.isRequired,
 };
 
