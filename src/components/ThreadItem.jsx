@@ -22,7 +22,7 @@ function ThreadItem({
     <div className="my-5">
       <CategoryItem category={category} />
       <h3 className="my-3 text-xl font-semibold">
-        <Link to={`/thread/${id}`}>{title}</Link>
+        <Link to={`/threads/${id}`}>{title}</Link>
       </h3>
       <div className="line-clamp-4">{parse(body)}</div>
       <div className="flex gap-5 mt-3">
