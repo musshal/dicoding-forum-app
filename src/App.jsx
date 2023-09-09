@@ -46,7 +46,7 @@ function App() {
               element={<HomePage />}
             />
             <Route
-              path="/detail"
+              path="/threads/:id"
               element={<DetailPage />}
             />
             <Route
@@ -86,7 +86,7 @@ function App() {
             element={<HomePage />}
           />
           <Route
-            path="/detail"
+            path="/threads/:id"
             element={<DetailPage />}
           />
           <Route
