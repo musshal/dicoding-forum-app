@@ -19,7 +19,7 @@ function HomePage() {
   const threadsList = threads.map((thread) => ({
     ...thread,
     user: users.find((user) => user.id === thread.ownerId),
-    authUser: authUser.id,
+    authUser: authUser ? authUser.id : null,
   }));
 
   const categories = Array.from(

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import ThreadItem from '../components/ThreadItem';
 import CommentList from '../components/CommentList';
 import { asyncReceiveThreadDetail } from '../states/threadDetail/action';
 
-function DetailPage() {
+function DetailPage({ authUser }) {
   const { id } = useParams();
   const { threadDetail = null } = useSelector((states) => states);
   const dispatch = useDispatch();
@@ -41,9 +42,25 @@ function DetailPage() {
           untuk memberi komentar
         </p>
       </div>
-      <CommentList />
+      {authUser ? (
+        <CommentList />
+      ) : (
+        <h3 className="text-xl font-semibold">Komentar (0)</h3>
+      )}
     </div>
   );
 }
+
+const authUserShape = {
+  token: PropTypes.string,
+};
+
+DetailPage.propTypes = {
+  authUser: PropTypes.shape(authUserShape),
+};
+
+DetailPage.defaultProps = {
+  authUser: null,
+};
 
 export default DetailPage;
