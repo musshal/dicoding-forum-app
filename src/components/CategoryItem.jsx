@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 function CategoryItem({ category }) {
   return (
-    <div className="border-2 border-gray-600 text-gray-600 w-fit rounded-md px-2">
+    <button
+      type="button"
+      className="border-2 border-gray-600 text-gray-600 w-fit rounded-md px-2"
+    >
       <p>{category}</p>
-    </div>
+    </button>
   );
 }
 
