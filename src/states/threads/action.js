@@ -79,7 +79,7 @@ function asyncToggleUpvoteThread(threadId) {
       toggleUpvoteThreadActionCreator({ threadId, userId: authUser.id }),
     );
     try {
-      await api.upvoteThread(threadId);
+      await api.upVoteThread(threadId);
     } catch (error) {
       toast(error.message);
       dispatch(
@@ -98,7 +98,7 @@ function asyncToggleDownvoteThread(threadId) {
       toggleDownvoteThreadActionCreator({ threadId, userId: authUser.id }),
     );
     try {
-      await api.downvoteThread(threadId);
+      await api.downVoteThread(threadId);
     } catch (error) {
       toast(error.message);
       dispatch(

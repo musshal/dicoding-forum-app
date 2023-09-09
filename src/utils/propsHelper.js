@@ -20,4 +20,13 @@ const threadProp = {
   user: PropTypes.shape(userProp),
 };
 
-export { userProp, threadProp };
+const commentProp = {
+  id: PropTypes.string,
+  owner: PropTypes.shape(userProp),
+  createdAt: PropTypes.string,
+  content: PropTypes.string,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string),
+  downVotesBy: PropTypes.arrayOf(PropTypes.string),
+};
+
+export { userProp, threadProp, commentProp };
