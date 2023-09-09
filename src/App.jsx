@@ -11,6 +11,7 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import DetailPage from './pages/DetailPage';
+import AddThreadPage from './pages/AddThreadPage';
 
 function App() {
   const { authUser = null, isPreload = false } = useSelector(
@@ -88,6 +89,10 @@ function App() {
           <Route
             path="/threads/:id"
             element={<DetailPage authUser={authUser} />}
+          />
+          <Route
+            path="/threads/add"
+            element={<AddThreadPage />}
           />
           <Route
             path="/leaderboards"
