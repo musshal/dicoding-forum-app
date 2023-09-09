@@ -9,7 +9,7 @@ const ActionType = {
 function receiveLeaderboardsActionCreator(leaderboards) {
   return {
     type: ActionType.RECEIVE_LEADERBOARDS,
-    payloas: {
+    payload: {
       leaderboards,
     },
   };
