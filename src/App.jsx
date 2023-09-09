@@ -47,7 +47,7 @@ function App() {
             />
             <Route
               path="/threads/:id"
-              element={<DetailPage />}
+              element={<DetailPage authUser={authUser} />}
             />
             <Route
               path="/leaderboards"
@@ -87,7 +87,7 @@ function App() {
           />
           <Route
             path="/threads/:id"
-            element={<DetailPage />}
+            element={<DetailPage authUser={authUser} />}
           />
           <Route
             path="/leaderboards"
