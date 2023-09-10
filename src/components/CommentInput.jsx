@@ -12,9 +12,10 @@ function CommentInput({ onComment }) {
         className="w-full resize-none border-2 px-2 py-1 border-gray-500 rounded-md"
         value={content}
         onChange={onContentChange}
+        required
       />
       <button
-        type="button"
+        type="submit"
         className="w-full bg-[#2D3E50] text-white px-2 py-1 rounded-lg"
         onClick={() => onComment(content)}
       >

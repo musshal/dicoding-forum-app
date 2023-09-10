@@ -25,14 +25,10 @@ function ThreadDetail({
 }) {
   const dispatch = useDispatch();
   const onUpVoteThread = () => {
-    if (authUser) {
-      dispatch(asyncToggleUpvoteThread(id));
-    }
+    if (authUser) dispatch(asyncToggleUpvoteThread(id));
   };
   const onDownVoteThread = () => {
-    if (authUser) {
-      dispatch(asyncToggleDownvoteThread(id));
-    }
+    if (authUser) dispatch(asyncToggleDownvoteThread(id));
   };
 
   return (

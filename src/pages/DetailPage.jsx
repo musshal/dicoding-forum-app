@@ -14,7 +14,13 @@ function DetailPage({ authUser }) {
   const { id } = useParams();
   const { threadDetail = null } = useSelector((states) => states);
   const dispatch = useDispatch();
-  const onComment = (content) => dispatch(asyncAddComment(id, content));
+  const onComment = (content) => {
+    if (content === '') {
+      return;
+    }
+
+    dispatch(asyncAddComment(id, content));
+  };
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(id));

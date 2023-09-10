@@ -31,8 +31,8 @@ function App() {
   if (authUser === null) {
     return (
       <div className="bg-gray-100">
-        <Loading />
         <Header />
+        <Loading />
         <main className="bg-white container m-auto min-h-screen max-w-3xl py-24 p-10">
           <Routes>
             <Route
@@ -71,8 +71,8 @@ function App() {
 
   return (
     <div className="bg-gray-100">
-      <Loading />
       <Header />
+      <Loading />
       <main className="bg-white container m-auto min-h-screen max-w-3xl py-24 p-10">
         <Routes>
           <Route
