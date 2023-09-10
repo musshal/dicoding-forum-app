@@ -1,4 +1,5 @@
 import React from 'react';
+import parse from 'html-react-parser';
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import { userProp } from '../utils/propsHelper';
@@ -12,36 +13,38 @@ function CommentItem({
   downVotesBy,
 }) {
   return (
-    <div>
-      <div className="flex justify-between my-3 items-center">
-        <div className="flex items-center gap-3">
+    <div className="flex flex-col gap-3">
+      <div className="flex justify-between">
+        <div className="flex gap-2">
           <img
             src={owner.avatar}
-            className="rounded-full w-10 h-10"
+            className="rounded-full"
             alt="User's avatar"
+            width={25}
+            height={25}
           />
           <p className="font-semibold">{owner.name}</p>
         </div>
         <p>{postedAt(createdAt)}</p>
       </div>
-      <p>{content}</p>
-      <div className="flex gap-3 mt-3">
+      <p>{parse(content)}</p>
+      <div className="flex gap-3">
         <button
           type="button"
           className="flex items-center gap-1"
         >
-          <AiOutlineLike />
+          <AiOutlineLike size={18} />
           {upVotesBy.length}
         </button>
         <button
           type="button"
           className="flex items-center gap-1"
         >
-          <AiOutlineDislike />
+          <AiOutlineDislike size={18} />
           {downVotesBy.length}
         </button>
       </div>
-      <hr className="mt-3" />
+      <hr />
     </div>
   );
 }

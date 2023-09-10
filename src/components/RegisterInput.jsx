@@ -15,6 +15,7 @@ function RegisterInput({ register }) {
         value={name}
         onChange={onNameChange}
         className="border-2 border-gray-400 rounded-md p-1"
+        required
       />
       <input
         type="email"
@@ -22,6 +23,7 @@ function RegisterInput({ register }) {
         value={email}
         onChange={onEmailChange}
         className="border-2 border-gray-400 rounded-md p-1"
+        required
       />
       <input
         type="password"
@@ -29,9 +31,10 @@ function RegisterInput({ register }) {
         value={password}
         onChange={onPasswordChange}
         className="border-2 border-gray-400 rounded-md p-1"
+        required
       />
       <button
-        type="button"
+        type="submit"
         onClick={() => register({ name, email, password })}
         className="bg-slate-700 p-1 rounded-md text-white"
       >

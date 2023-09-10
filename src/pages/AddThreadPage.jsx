@@ -8,6 +8,10 @@ function AddThreadPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const onCreate = ({ title, category, body }) => {
+    if (title === '' || category === '' || body === '') {
+      return;
+    }
+
     dispatch(asyncAddThread({ title, category, body }));
     navigate('/');
   };

@@ -6,21 +6,23 @@ import { commentProp } from '../utils/propsHelper';
 function CommentList({ comments }) {
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-xl">
+      <h2 className="text-xl font-semibold">
         Komentar
         {' '}
         {`(${comments.length})`}
       </h2>
-      {comments.map((comment) => (
-        <CommentItem
-          key={comment.id}
-          owner={comment.owner}
-          createdAt={comment.createdAt}
-          content={comment.content}
-          upVotesBy={comment.upVotesBy}
-          downVotesBy={comment.downVotesBy}
-        />
-      ))}
+      <div className="flex flex-col gap-5">
+        {comments.map((comment) => (
+          <CommentItem
+            key={comment.id}
+            owner={comment.owner}
+            createdAt={comment.createdAt}
+            content={comment.content}
+            upVotesBy={comment.upVotesBy}
+            downVotesBy={comment.downVotesBy}
+          />
+        ))}
+      </div>
     </div>
   );
 }

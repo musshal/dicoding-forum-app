@@ -14,6 +14,7 @@ function LoginInput({ login }) {
         value={email}
         onChange={onEmailChange}
         className="border-2 border-gray-400 rounded-md p-1"
+        required
       />
       <input
         type="password"
@@ -21,9 +22,10 @@ function LoginInput({ login }) {
         value={password}
         onChange={onPasswordChange}
         className="border-2 border-gray-400 rounded-md p-1"
+        required
       />
       <button
-        type="button"
+        type="submit"
         onClick={() => login({ email, password })}
         className="bg-slate-700 p-1 rounded-md text-white"
       >

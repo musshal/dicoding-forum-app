@@ -5,19 +5,21 @@ import { userProp } from '../utils/propsHelper';
 
 function LeaderboardList({ leaderboards }) {
   return (
-    <div>
-      <div className="flex justify-between text-lg">
+    <div className="flex flex-col gap-3">
+      <div className="flex justify-between text-xl">
         <p>Pengguna</p>
         <p>Skor</p>
       </div>
-      {leaderboards.map((leaderboard) => (
-        <LeaderboardItem
-          key={leaderboard.user.id}
-          avatar={leaderboard.user.avatar}
-          name={leaderboard.user.name}
-          score={leaderboard.score}
-        />
-      ))}
+      <div className="flex flex-col gap-3">
+        {leaderboards.map((leaderboard) => (
+          <LeaderboardItem
+            key={leaderboard.user.id}
+            avatar={leaderboard.user.avatar}
+            name={leaderboard.user.name}
+            score={leaderboard.score}
+          />
+        ))}
+      </div>
     </div>
   );
 }

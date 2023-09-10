@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 function Footer({ authUser, logout }) {
   if (authUser === null) {
     return (
-      <footer className="fixed bottom-0 shadow-inner w-full flex justify-center gap-10 bg-white text-gray-600">
+      <footer className="fixed bottom-0 border-t-2 w-full flex justify-center gap-10 bg-white text-gray-700 text-sm">
         <Link
           to="/threads"
           type="button"
-          className="inline-flex flex-col p-2 items-center justify-center group"
+          className="flex flex-col gap-1 p-2 items-center"
         >
           <HiOutlineChatBubbleLeftRight size={25} />
           <span>Threads</span>
@@ -20,14 +20,14 @@ function Footer({ authUser, logout }) {
         <Link
           to="/leaderboards"
           type="button"
-          className="inline-flex flex-col p-2 items-center justify-center group"
+          className="flex flex-col gap-1 p-2 items-center"
         >
           <MdOutlineLeaderboard size={25} />
           <span>Leaderboards</span>
         </Link>
         <Link
           to="/login"
-          className="inline-flex flex-col p-2 items-center justify-center group"
+          className="flex flex-col gap-1 p-2 items-center"
         >
           <AiOutlineLogin size={25} />
           <span>Login</span>

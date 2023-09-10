@@ -4,7 +4,7 @@ import CategoryItem from './CategoryItem';
 
 function CategoryList({ categories }) {
   return (
-    <div className="flex flex-wrap gap-3 w-fit">
+    <div className="flex flex-wrap gap-3">
       {categories.map((category) => (
         <CategoryItem
           key={category}

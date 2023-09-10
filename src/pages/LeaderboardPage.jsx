@@ -12,8 +12,8 @@ function LeaderboardPage() {
   }, [dispatch]);
 
   return (
-    <section>
-      <h1 className="text-slate-700 text-2xl font-semibold mb-5">
+    <section className="flex flex-col gap-5">
+      <h1 className="text-slate-700 text-2xl font-semibold">
         Klasemen Pengguna Aktif
       </h1>
       <LeaderboardList leaderboards={leaderboards} />

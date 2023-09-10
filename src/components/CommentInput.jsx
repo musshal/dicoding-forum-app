@@ -9,16 +9,16 @@ function CommentInput({ onComment }) {
     <form className="flex flex-col gap-2">
       <textarea
         rows={4}
-        className="w-full resize-none border-2 px-2 py-1 border-black rounded-md"
+        className="w-full resize-none border-2 px-2 py-1 border-gray-500 rounded-md"
         value={content}
         onChange={onContentChange}
       />
       <button
         type="button"
-        className="w-full bg-[#2D3E50] text-white p-2 rounded-lg"
+        className="w-full bg-[#2D3E50] text-white px-2 py-1 rounded-lg"
         onClick={() => onComment(content)}
       >
-        Buat
+        Kirim
       </button>
     </form>
   );

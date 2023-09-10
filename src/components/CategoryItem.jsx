@@ -5,9 +5,12 @@ function CategoryItem({ category }) {
   return (
     <button
       type="button"
-      className="border-2 border-gray-600 text-gray-600 w-fit rounded-md px-2"
+      className="border-2 border-gray-500 text-gray-600 rounded-lg px-2 w-fit"
     >
-      <p>{category}</p>
+      <p>
+        #
+        {category}
+      </p>
     </button>
   );
 }
