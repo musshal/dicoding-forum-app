@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
 import RegisterInput from '../components/RegisterInput';
 import { asyncRegisterUser } from '../states/users/action';
 
@@ -10,6 +9,10 @@ function RegisterPage() {
   const dispatch = useDispatch();
 
   const onRegister = ({ name, email, password }) => {
+    if (name === '' || email === '' || password === '') {
+      return;
+    }
+
     dispatch(asyncRegisterUser({ name, email, password }));
     navigate('/');
   };
@@ -28,7 +31,6 @@ function RegisterPage() {
           Masuk di sini.
         </Link>
       </p>
-      <ToastContainer />
     </section>
   );
 }
