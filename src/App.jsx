@@ -5,27 +5,24 @@ import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
 import Loading from './components/Loading';
 import Header from './components/Header';
-import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage';
-import LeaderboardPage from './pages/LeaderboardPage';
-import DetailPage from './pages/DetailPage';
 import AddThreadPage from './pages/AddThreadPage';
+import Footer from './components/Footer';
 
 function App() {
   const { authUser = null, isPreload = false } = useSelector(
     (states) => states,
   );
   const dispatch = useDispatch();
+  const onLogout = () => dispatch(asyncUnsetAuthUser());
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
   }, [dispatch]);
-
-  const onLogout = () => {
-    dispatch(asyncUnsetAuthUser());
-  };
 
   if (isPreload) {
     return null;
@@ -35,8 +32,8 @@ function App() {
     return (
       <div className="bg-gray-100">
         <Loading />
-        <Header className />
-        <main className="bg-white m-auto min-h-screen max-w-4xl py-24 p-10">
+        <Header />
+        <main className="bg-white container m-auto min-h-screen max-w-3xl py-24 p-10">
           <Routes>
             <Route
               path="/"
@@ -75,8 +72,8 @@ function App() {
   return (
     <div className="bg-gray-100">
       <Loading />
-      <Header className />
-      <main className="bg-white m-auto min-h-screen max-w-4xl py-24 p-10">
+      <Header />
+      <main className="bg-white container m-auto min-h-screen max-w-3xl py-24 p-10">
         <Routes>
           <Route
             path="/"
