@@ -17,7 +17,10 @@ function CommentInput({ onComment }) {
       <button
         type="submit"
         className="w-full bg-[#2D3E50] text-white px-2 py-1 rounded-lg"
-        onClick={() => onComment(content)}
+        onClick={(e) => {
+          e.preventDefault();
+          onComment(content);
+        }}
       >
         Kirim
       </button>

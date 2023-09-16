@@ -15,6 +15,7 @@ function ThreadList({ threads, authUser }) {
           category={thread.category}
           upVotesBy={thread.upVotesBy}
           downVotesBy={thread.downVotesBy}
+          totalComments={thread.totalComments}
           user={thread.user}
           createdAt={thread.createdAt}
           authUser={authUser}

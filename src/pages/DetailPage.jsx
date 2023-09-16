@@ -39,6 +39,7 @@ function DetailPage({ authUser }) {
         downVotesBy={threadDetail.downVotesBy}
         user={threadDetail.owner}
         createdAt={threadDetail.createdAt}
+        authUser={authUser}
       />
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
@@ -60,7 +61,10 @@ function DetailPage({ authUser }) {
         </div>
         <div>
           {authUser ? (
-            <CommentList comments={threadDetail.comments} />
+            <CommentList
+              comments={threadDetail.comments}
+              authUser={authUser}
+            />
           ) : (
             <h3 className="text-xl font-semibold">Komentar (0)</h3>
           )}

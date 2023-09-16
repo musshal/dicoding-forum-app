@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
-import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
-import { BiShare } from 'react-icons/bi';
+import { AiOutlineLike, AiOutlineDislike, AiOutlineComment } from 'react-icons/ai';
 import {
   asyncToggleDownvoteThread,
   asyncToggleUpvoteThread,
@@ -20,20 +19,17 @@ function ThreadItem({
   category,
   upVotesBy,
   downVotesBy,
+  totalComments,
   user,
   createdAt,
   authUser,
 }) {
   const dispatch = useDispatch();
   const onUpVoteThread = () => {
-    if (authUser) {
-      dispatch(asyncToggleUpvoteThread(id));
-    }
+    if (authUser) dispatch(asyncToggleUpvoteThread(id));
   };
   const onDownVoteThread = () => {
-    if (authUser) {
-      dispatch(asyncToggleDownvoteThread(id));
-    }
+    if (authUser) dispatch(asyncToggleDownvoteThread(id));
   };
 
   return (
@@ -61,8 +57,8 @@ function ThreadItem({
           {downVotesBy.length}
         </button>
         <div className="flex items-center gap-1">
-          <BiShare size={18} />
-          <p>{Math.floor(Math.random() * 10)}</p>
+          <AiOutlineComment size={18} />
+          <p>{totalComments}</p>
         </div>
         <p>{postedAt(createdAt)}</p>
         <p>
@@ -87,6 +83,7 @@ ThreadItem.propTypes = {
   category: PropTypes.string.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  totalComments: PropTypes.number.isRequired,
   user: PropTypes.shape(userProp),
   createdAt: PropTypes.string.isRequired,
   authUser: PropTypes.shape(authUserShape),
