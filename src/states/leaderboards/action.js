@@ -1,6 +1,6 @@
-const { showLoading, hideLoading } = require('react-redux-loading-bar');
-const { toast } = require('react-toastify');
-const { default: api } = require('../../data/api');
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
+import api from '../../data/api';
 
 const ActionType = {
   RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
