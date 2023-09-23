@@ -1,7 +1,12 @@
 import React from 'react';
 import parse from 'html-react-parser';
 import { useDispatch } from 'react-redux';
-import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
+import {
+  AiOutlineLike,
+  AiOutlineDislike,
+  AiFillLike,
+  AiFillDislike,
+} from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import { userProp } from '../utils/propsHelper';
 import postedAt from '../utils';
@@ -49,7 +54,11 @@ function CommentItem({
           className="flex items-center gap-1"
           onClick={onUpVoteComment}
         >
-          <AiOutlineLike size={18} />
+          {upVotesBy.includes(authUser.id) ? (
+            <AiFillLike size={18} />
+          ) : (
+            <AiOutlineLike size={18} />
+          )}
           {upVotesBy.length}
         </button>
         <button
@@ -57,7 +66,11 @@ function CommentItem({
           className="flex items-center gap-1"
           onClick={onDownVoteComment}
         >
-          <AiOutlineDislike size={18} />
+          {downVotesBy.includes(authUser.id) ? (
+            <AiFillDislike size={18} />
+          ) : (
+            <AiOutlineDislike size={18} />
+          )}
           {downVotesBy.length}
         </button>
       </div>

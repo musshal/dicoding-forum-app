@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ThreadItem from './ThreadItem';
 import { threadProp } from '../utils/propsHelper';
 
-function ThreadList({ threads, authUser }) {
+function ThreadList({ threads, authUser, onClickCategory }) {
   return (
     <div className="flex flex-col gap-5">
       {threads.map((thread) => (
@@ -19,6 +19,7 @@ function ThreadList({ threads, authUser }) {
           user={thread.user}
           createdAt={thread.createdAt}
           authUser={authUser}
+          onClickCategory={onClickCategory}
         />
       ))}
     </div>
@@ -32,10 +33,12 @@ const authUserShape = {
 ThreadList.propTypes = {
   threads: PropTypes.arrayOf(PropTypes.shape(threadProp)).isRequired,
   authUser: PropTypes.shape(authUserShape),
+  onClickCategory: PropTypes.func,
 };
 
 ThreadList.defaultProps = {
   authUser: null,
+  onClickCategory: undefined,
 };
 
 export default ThreadList;

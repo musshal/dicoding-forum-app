@@ -2,15 +2,21 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
-import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
-import { BiShare } from 'react-icons/bi';
 import {
-  asyncToggleDownvoteThread,
-  asyncToggleUpvoteThread,
-} from '../states/threads/action';
+  AiOutlineLike,
+  AiOutlineDislike,
+  AiFillDislike,
+  AiFillLike,
+} from 'react-icons/ai';
+import { BiShare } from 'react-icons/bi';
+import { toast } from 'react-toastify';
 import CategoryItem from './CategoryItem';
 import postedAt from '../utils';
 import { userProp } from '../utils/propsHelper';
+import {
+  asyncToggleDownVoteThreadDetail,
+  asyncToggleUpVoteThreadDetail,
+} from '../states/threadDetail/action';
 
 function ThreadDetail({
   id,
@@ -25,15 +31,28 @@ function ThreadDetail({
 }) {
   const dispatch = useDispatch();
   const onUpVoteThread = () => {
-    if (authUser) dispatch(asyncToggleUpvoteThread(id));
+    if (authUser) return dispatch(asyncToggleUpVoteThreadDetail(id));
+    return toast.info('Please login to up vote');
   };
   const onDownVoteThread = () => {
-    if (authUser) dispatch(asyncToggleDownvoteThread(id));
+    if (authUser) dispatch(asyncToggleDownVoteThreadDetail(id));
+    return toast.info('Please login to down vote');
+  };
+  const renderUpVote = () => {
+    if (upVotesBy.includes(authUser.id)) return <AiFillLike size={18} />;
+    return <AiOutlineLike size={18} />;
+  };
+  const renderDownVote = () => {
+    if (downVotesBy.includes(authUser.id)) return <AiFillDislike size={18} />;
+    return <AiOutlineDislike size={18} />;
   };
 
   return (
     <div className="flex flex-col gap-5 text-gray-800">
-      <CategoryItem category={category} />
+      <CategoryItem
+        category={category}
+        onClickCategory={() => {}}
+      />
       <h3 className="text-3xl font-semibold ">{title}</h3>
       <div className="text-lg">{parse(body)}</div>
       <div className="flex gap-3 items-center text-md">
@@ -42,7 +61,7 @@ function ThreadDetail({
           className="flex items-center gap-1"
           onClick={onUpVoteThread}
         >
-          <AiOutlineLike size={18} />
+          {authUser ? renderUpVote() : <AiOutlineLike size={18} />}
           {upVotesBy.length}
         </button>
         <button
@@ -50,7 +69,7 @@ function ThreadDetail({
           className="flex items-center gap-1"
           onClick={onDownVoteThread}
         >
-          <AiOutlineDislike size={18} />
+          {authUser ? renderDownVote() : <AiOutlineDislike size={18} />}
           {downVotesBy.length}
         </button>
         <div className="flex items-center gap-1">

@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function CategoryItem({ category }) {
+function CategoryItem({ category, onClickCategory, params }) {
   return (
     <button
       type="button"
-      className="border-2 border-gray-500 text-gray-600 rounded-lg px-2 w-fit"
+      className={`${
+        params === category ? 'bg-black text-white' : 'text-gray-600'
+      } border-2 border-gray-500  rounded-lg px-2 w-fit`}
+      onClick={() => onClickCategory(category)}
     >
       <p>
         #
@@ -17,6 +20,13 @@ function CategoryItem({ category }) {
 
 CategoryItem.propTypes = {
   category: PropTypes.string.isRequired,
+  onClickCategory: PropTypes.func,
+  params: PropTypes.string,
+};
+
+CategoryItem.defaultProps = {
+  onClickCategory: undefined,
+  params: undefined,
 };
 
 export default CategoryItem;

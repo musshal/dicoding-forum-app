@@ -3,10 +3,17 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
-import { AiOutlineLike, AiOutlineDislike, AiOutlineComment } from 'react-icons/ai';
 import {
-  asyncToggleDownvoteThread,
-  asyncToggleUpvoteThread,
+  AiOutlineLike,
+  AiOutlineDislike,
+  AiOutlineComment,
+  AiFillLike,
+  AiFillDislike,
+} from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import {
+  asyncToggleDownVoteThread,
+  asyncToggleUpVoteThread,
 } from '../states/threads/action';
 import CategoryItem from './CategoryItem';
 import postedAt from '../utils';
@@ -23,18 +30,32 @@ function ThreadItem({
   user,
   createdAt,
   authUser,
+  onClickCategory,
 }) {
   const dispatch = useDispatch();
   const onUpVoteThread = () => {
-    if (authUser) dispatch(asyncToggleUpvoteThread(id));
+    if (authUser) return dispatch(asyncToggleUpVoteThread(id));
+    return toast.info('Please login to up vote');
   };
   const onDownVoteThread = () => {
-    if (authUser) dispatch(asyncToggleDownvoteThread(id));
+    if (authUser) return dispatch(asyncToggleDownVoteThread(id));
+    return toast.info('Please login to down vote');
+  };
+  const renderUpVote = () => {
+    if (upVotesBy.includes(authUser.id)) return <AiFillLike size={18} />;
+    return <AiOutlineLike size={18} />;
+  };
+  const renderDownVote = () => {
+    if (downVotesBy.includes(authUser.id)) return <AiFillDislike size={18} />;
+    return <AiOutlineDislike size={18} />;
   };
 
   return (
     <div className="flex flex-col gap-2">
-      <CategoryItem category={category} />
+      <CategoryItem
+        category={category}
+        onClickCategory={onClickCategory}
+      />
       <h3 className="text-xl font-semibold hover:text-blue-700">
         <Link to={`/threads/${id}`}>{title}</Link>
       </h3>
@@ -45,7 +66,7 @@ function ThreadItem({
           className="flex items-center gap-1"
           onClick={onUpVoteThread}
         >
-          <AiOutlineLike size={18} />
+          {authUser ? renderUpVote() : <AiOutlineLike size={18} />}
           {upVotesBy.length}
         </button>
         <button
@@ -53,7 +74,7 @@ function ThreadItem({
           className="flex items-center gap-1"
           onClick={onDownVoteThread}
         >
-          <AiOutlineDislike size={18} />
+          {authUser ? renderDownVote() : <AiOutlineDislike size={18} />}
           {downVotesBy.length}
         </button>
         <div className="flex items-center gap-1">
@@ -87,10 +108,12 @@ ThreadItem.propTypes = {
   user: PropTypes.shape(userProp),
   createdAt: PropTypes.string.isRequired,
   authUser: PropTypes.shape(authUserShape),
+  onClickCategory: PropTypes.func,
 };
 
 ThreadItem.defaultProps = {
   authUser: null,
+  onClickCategory: undefined,
 };
 
 ThreadItem.defaultProps = {
