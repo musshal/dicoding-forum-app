@@ -21,7 +21,7 @@ function asyncRegisterUser({ name, email, password }) {
     try {
       await api.register({ name, email, password });
     } catch (error) {
-      toast(error.message);
+      toast.error('Failed to register');
     }
     dispatch(hideLoading());
   };

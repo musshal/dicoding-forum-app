@@ -13,7 +13,7 @@ function asyncPopulateUsersAndThreads() {
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
-      toast(error.message);
+      toast.error('Failed to fetch threads');
     }
     dispatch(hideLoading());
   };

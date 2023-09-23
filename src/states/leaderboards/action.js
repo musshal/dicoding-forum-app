@@ -22,10 +22,14 @@ function asyncReceiveLeaderboards() {
       const leaderboards = await api.getLeaderboards();
       dispatch(receiveLeaderboardsActionCreator(leaderboards));
     } catch (error) {
-      toast(error.message);
+      toast.error('Failed to fetch leaderboards');
     }
     dispatch(hideLoading());
   };
 }
 
-export { ActionType, receiveLeaderboardsActionCreator, asyncReceiveLeaderboards };
+export {
+  ActionType,
+  receiveLeaderboardsActionCreator,
+  asyncReceiveLeaderboards,
+};

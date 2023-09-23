@@ -103,7 +103,7 @@ function asyncReceiveThreadDetail(threadId) {
       const threadDetail = await api.getThreadDetail(threadId);
       dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
-      toast(error.message);
+      toast.error('Failed to fetch blog detail');
     }
     dispatch(hideLoading());
   };
@@ -132,7 +132,6 @@ function asyncToggleDownVoteThreadDetail() {
     try {
       await api.downVoteThread(threadDetail.id);
     } catch (error) {
-      toast(error.message);
       dispatch(toggleDownVoteThreadDetailActionCreator(authUser.id));
     }
     dispatch(hideLoading());
@@ -147,7 +146,6 @@ function asyncToggleNeutralizeThreadDetailVote() {
     try {
       await api.neutralizeThreadVote(threadDetail.id);
     } catch (error) {
-      toast(error.message);
       dispatch(toggleNeutralizeThreadDetailVote(authUser.id));
     }
     dispatch(hideLoading());
@@ -161,7 +159,7 @@ function asyncAddComment(threadid, content) {
       const comment = await api.createComment(threadid, content);
       dispatch(addCommentActionCreator(comment));
     } catch (error) {
-      toast(error.message);
+      toast.error('Failed to add new comment');
     }
     dispatch(hideLoading());
   };
@@ -175,7 +173,6 @@ function asyncToggleUpVoteComment(commentId) {
     try {
       await api.upVoteComment(threadDetail.id, commentId);
     } catch (error) {
-      toast(error.message);
       dispatch(toggleUpVoteCommentActionCreator(authUser.id, commentId));
     }
     dispatch(hideLoading());
@@ -190,7 +187,6 @@ function asyncToggleDownVoteComment(commentId) {
     try {
       await api.downVoteComment(threadDetail.id, commentId);
     } catch (error) {
-      toast(error.message);
       dispatch(toggleDownVoteCommentActionCreator(authUser.id, commentId));
     }
     dispatch(hideLoading());
@@ -205,7 +201,6 @@ function asyncToggleNeutralizeCommentVote(commentId) {
     try {
       await api.neutralizeCommentVote(threadDetail.id, commentId);
     } catch (error) {
-      toast(error.message);
       dispatch(toggleNeutralizeCommentVote(authUser.id, commentId));
     }
     dispatch(hideLoading());

@@ -65,13 +65,13 @@ function asyncAddThread({ title, body, category = '' }) {
       const thread = await api.createThread({ title, body, category });
       dispatch(addThreadActionCreator(thread));
     } catch (error) {
-      toast(error.message);
+      toast.error('Failed to add new thread');
     }
     dispatch(hideLoading());
   };
 }
 
-function asyncToggleUpvoteThread(threadId) {
+function asyncToggleUpVoteThread(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
@@ -81,7 +81,6 @@ function asyncToggleUpvoteThread(threadId) {
     try {
       await api.upVoteThread(threadId);
     } catch (error) {
-      toast(error.message);
       dispatch(
         toggleUpvoteThreadActionCreator({ threadId, userId: authUser.id }),
       );
@@ -90,7 +89,7 @@ function asyncToggleUpvoteThread(threadId) {
   };
 }
 
-function asyncToggleDownvoteThread(threadId) {
+function asyncToggleDownVoteThread(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
@@ -100,7 +99,6 @@ function asyncToggleDownvoteThread(threadId) {
     try {
       await api.downVoteThread(threadId);
     } catch (error) {
-      toast(error.message);
       dispatch(
         toggleDownvoteThreadActionCreator({ threadId, userId: authUser.id }),
       );
@@ -122,7 +120,6 @@ function asyncNeutralizeThreadVote(threadId) {
     try {
       await api.neutralizeThreadVote(threadId);
     } catch (error) {
-      toast(error.message);
       dispatch(
         toggleNeutralizeThreadVoteActionCreator({
           threadId,
@@ -142,7 +139,7 @@ export {
   toggleDownvoteThreadActionCreator,
   toggleNeutralizeThreadVoteActionCreator,
   asyncAddThread,
-  asyncToggleUpvoteThread,
-  asyncToggleDownvoteThread,
+  asyncToggleUpVoteThread,
+  asyncToggleDownVoteThread,
   asyncNeutralizeThreadVote,
 };
