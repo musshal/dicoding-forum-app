@@ -34,7 +34,7 @@ function RegisterInput({ register }) {
         required
       />
       <button
-        type="submit"
+        type="button"
         onClick={() => register({ name, email, password })}
         className="bg-slate-700 p-1 rounded-md text-white"
       >
