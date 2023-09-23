@@ -14,7 +14,7 @@ function RegisterPage() {
     }
 
     dispatch(asyncRegisterUser({ name, email, password }));
-    navigate('/');
+    navigate('/login');
   };
 
   return (
