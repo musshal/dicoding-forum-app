@@ -25,7 +25,7 @@ function LoginInput({ login }) {
         required
       />
       <button
-        type="submit"
+        type="button"
         onClick={() => login({ email, password })}
         className="bg-slate-700 p-1 rounded-md text-white"
       >

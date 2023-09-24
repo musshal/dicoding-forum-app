@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import LoginInput from '../components/LoginInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
 
@@ -9,12 +10,11 @@ function LoginPage() {
   const dispatch = useDispatch();
 
   const onLogin = ({ email, password }) => {
-    if (email === '' || password === '') {
-      return;
-    }
+    if (email === '') return toast.error('Email is not allowed to be empty');
+    if (password === '') return toast.error('Password is not allowed to be empty');
 
     dispatch(asyncSetAuthUser({ email, password }));
-    navigate('/');
+    return navigate('/');
   };
 
   return (

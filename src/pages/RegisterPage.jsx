@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import RegisterInput from '../components/RegisterInput';
 import { asyncRegisterUser } from '../states/users/action';
 
@@ -9,12 +10,12 @@ function RegisterPage() {
   const dispatch = useDispatch();
 
   const onRegister = ({ name, email, password }) => {
-    if (name === '' || email === '' || password === '') {
-      return;
-    }
+    if (name === '') return toast.error('Name is not allowed to be empty');
+    if (email === '') return toast.error('Email is not allowed to be empty');
+    if (password === '') return toast.error('Password is not allowed to be empty');
 
     dispatch(asyncRegisterUser({ name, email, password }));
-    navigate('/login');
+    return navigate('/login');
   };
 
   return (
