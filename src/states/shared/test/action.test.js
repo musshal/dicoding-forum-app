@@ -27,7 +27,7 @@ const fakeThreadResponse = [
     body: 'Ini adalah thread pertama',
     category: 'General',
     createdAt: '2023-04-21T07:00:00.000Z',
-    ownerId: 'users-1',
+    ownerId: 'user-1',
     upVotesBy: [],
     downVotesBy: [],
     totalComments: 0,
@@ -36,10 +36,10 @@ const fakeThreadResponse = [
 
 const fakeUsersResponse = [
   {
-    id: 'candra',
-    name: 'candra',
-    email: 'chndrwali@gmail.com',
-    avatar: 'https://generated-image-url.jpg',
+    id: 'user-1',
+    name: 'shal',
+    email: 'shal@example.com',
+    avatar: 'http://www.example.com/image.jpg',
   },
 ];
 

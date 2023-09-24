@@ -10,19 +10,19 @@ import leaderboardsReducer from '../reducer';
 const globalLeaderboards = [
   {
     user: {
-      id: 'users-1',
-      name: 'candra',
-      email: 'candra@gmail.com',
-      avatar: 'https://generated-image-url.jpg',
+      id: 'user-1',
+      name: 'shal',
+      email: 'shal@example.com',
+      avatar: 'http://www.example.com/image.jpg',
     },
     score: 10,
   },
   {
     user: {
-      id: 'users-2',
-      name: 'Iklima',
-      email: 'iklima@gmail.com',
-      avatar: 'https://generated-image-url.jpg',
+      id: 'user-2',
+      name: 'mus',
+      email: 'mus@example.com',
+      avatar: 'http://www.example.com/image.jpg',
     },
     score: 10,
   },

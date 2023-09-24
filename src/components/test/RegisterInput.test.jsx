@@ -33,18 +33,18 @@ describe('Register Input component', () => {
     render(<RegisterInput register={() => {}} />);
     const usernameInput = await screen.getByPlaceholderText('Name');
     // Action
-    await userEvent.type(usernameInput, 'amilki');
+    await userEvent.type(usernameInput, 'shal');
     // Assert
-    expect(usernameInput).toHaveValue('amilki');
+    expect(usernameInput).toHaveValue('shal');
   });
   it('should handle email typing correctly', async () => {
     // Arrange
     render(<RegisterInput register={() => {}} />);
     const emailInput = await screen.getByPlaceholderText('Email');
     // Action
-    await userEvent.type(emailInput, 'amilki');
+    await userEvent.type(emailInput, 'shal');
     // Assert
-    expect(emailInput).toHaveValue('amilki');
+    expect(emailInput).toHaveValue('shal');
   });
 
   it('should handle password typing correctly', async () => {
@@ -62,9 +62,9 @@ describe('Register Input component', () => {
     const mockRegister = vi.fn();
     render(<RegisterInput register={mockRegister} />);
     const usernameInput = await screen.getByPlaceholderText('Name');
-    await userEvent.type(usernameInput, 'amilki');
+    await userEvent.type(usernameInput, 'shal');
     const emailInput = await screen.getByPlaceholderText('Email');
-    await userEvent.type(emailInput, 'amilki');
+    await userEvent.type(emailInput, 'shal');
     const passwordInput = await screen.getByPlaceholderText('Password');
     await userEvent.type(passwordInput, 'passwordtest');
     const registerButton = await screen.getByRole('button', {
@@ -74,8 +74,8 @@ describe('Register Input component', () => {
     await userEvent.click(registerButton);
     // Assert
     expect(mockRegister).toBeCalledWith({
-      name: 'amilki',
-      email: 'amilki',
+      name: 'shal',
+      email: 'shal',
       password: 'passwordtest',
     });
   });

@@ -24,10 +24,10 @@ import {
 const fakeLeaderboardsResponse = [
   {
     user: {
-      id: 'users-1',
-      name: 'candri',
-      email: 'candri@gmail.com',
-      avatar: 'https://generated-image-url.jpg',
+      id: 'user-1',
+      name: 'shal',
+      email: 'shal@example.com',
+      avatar: 'http://www.example.com/image.jpg',
     },
     score: 10,
   },
