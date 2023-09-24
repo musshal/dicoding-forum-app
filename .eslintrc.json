@@ -5,7 +5,10 @@
     "node": true,
     "cypress/globals": true
   },
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "plugin:storybook/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -16,5 +19,7 @@
     "import/prefer-default-export": "off",
     "linebreak-style": "off"
   },
-  "plugins": ["cypress"]
+  "plugins": [
+    "cypress"
+  ]
 }
