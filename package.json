@@ -27,7 +27,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./ --fix",
     "e2e": "cypress run",
-    "ci:test": "vitest --no-watch && start-server-and-test dev http-get://0.0.0.0:5173 e2e",
+    "ci:test": "vitest --no-watch && start-server-and-test dev http-get://0.0.0.0:3000 e2e",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
